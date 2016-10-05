@@ -1,5 +1,5 @@
 class LexicalAnalyzer:
-	def __init__(self, sting):
+	def __init__(self, string):
 		self.str = string
 		self.state = 0
 
@@ -94,7 +94,9 @@ class LexicalAnalyzer:
 		self.state = 0
 		tokenLexic = []
 		for self.cc in self.str:
+			print(self.cc)
 			self.decideState()
+			print(self.state)
 			if (0 < self.state) and (self.state <= 10):
 				tokenLexic.append(self.state)
 			elif (self.state is 99):

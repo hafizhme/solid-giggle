@@ -4,4 +4,4 @@ la = LexicalAnalyzer(input())
 
 ga = la.generateTokenLexic()
 
-print(la.str)
+print(ga)
