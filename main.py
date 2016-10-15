@@ -2,6 +2,6 @@ from machine import LexicalAnalyzer
 
 la = LexicalAnalyzer(input())
 
-ga = la.generateTokenLexic()
+token = la.generateTokenLexic()
 
-print(ga)
+print(*token, " ")
