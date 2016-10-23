@@ -1,7 +1,7 @@
 from machine import LexicalAnalyzer
 
-la = LexicalAnalyzer(input())
+la = LexicalAnalyzer(input("Input  : "))
 
 token = la.generateTokenLexic()
 
-print(*token, " ")
+print("Output :",*token, " ")
