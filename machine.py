@@ -8,18 +8,19 @@ class LexicalAnalyzer:
 	def __decideState(self):
 		if (self.state is 0):
 			nc = {
-				"p" : 11,
-				"q" : 11,
-				"r" : 11,
-				"s" : 11,
-				"n" : 21,
-				"a" : 31,
-				"o" : 41,
-				"x" : 51,
-				"i" : 68,
-				"t" : 71,
-				"(" : 91,
-				")" : 101,
+				"p" : 1,
+				"q" : 1,
+				"r" : 1,
+				"s" : 1,
+				"n" : 3,
+				"a" : 7,
+				"o" : 11,
+				"x" : 14,
+				"i" : 18,
+				"t" : 21,
+				"(" : 28,
+				")" : 30,
+				" " : 0
 			}
 			try:
 				self.state =  nc[self.cc]
@@ -27,191 +28,158 @@ class LexicalAnalyzer:
 			except KeyError:
 				self.tokenLexic.append("ERROR")
 				return False
-		elif (self.state is 11) :
+		elif (self.state is 1) :
 			if (self.cc is " "):
 				self.state = 0
-				self.tokenLexic.append(1)
+				self.tokenLexic.append(1) # q2
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 3) :
+			if (self.cc is "o"):
+				self.state = 4
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 4) :
+			if (self.cc is "t"):
+				self.state = 5
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 5) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(2) # q6
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 7) :
+			if (self.cc is "n"):
+				self.state = 8
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 8) :
+			if (self.cc is "d"):
+				self.state = 9
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 9) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(3) # q10
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 11) :
+			if (self.cc is "r"):
+				self.state = 12
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 12) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(4) # q13
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 14) :
+			if (self.cc is "o"):
+				self.state = 15
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 15) :
+			if (self.cc is "r"):
+				self.state = 16
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 16) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(5) # q17
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 18) :
+			if (self.cc is "f"):
+				self.state = 19
+				return True
+			else :
+				self.tokenLexic.append("ERROR")
+				return False
+		elif (self.state is 19) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(6) # q20
+				return True
+			elif (self.cc is "f"):
+				self.state = 26
 				return True
 			else :
 				self.tokenLexic.append("ERROR")
 				return False
 		elif (self.state is 21) :
-			if (self.cc is "o"):
+			if (self.cc is "h"):
 				self.state = 22
 				return True
-			else :
+			else:
 				self.tokenLexic.append("ERROR")
-				return False
 		elif (self.state is 22) :
-			if (self.cc is "t"):
+			if (self.cc is "e"):
 				self.state = 23
 				return True
-			else :
+			else:
 				self.tokenLexic.append("ERROR")
-				return False
 		elif (self.state is 23) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(2)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 31) :
 			if (self.cc is "n"):
-				self.state = 32
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 32) :
-			if (self.cc is "d"):
-				self.state = 33
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 33) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(3)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 41) :
-			if (self.cc is "r"):
-				self.state = 42
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 42) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(4)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 51) :
-			if (self.cc is "o"):
-				self.state = 52
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 52) :
-			if (self.cc is "r"):
-				self.state = 53
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 53) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(5)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 68) :
-			if (self.cc is "f"):
-				self.state = 69
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 69) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(6)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 69) :
-			if (self.cc is "f"):
-				self.state = 81
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 71) :
-			if (self.cc is "h"):
-				self.state = 72
+				self.state = 24
 				return True
 			else:
 				self.tokenLexic.append("ERROR")
-		elif (self.state is 72) :
-			if (self.cc is "e"):
-				self.state = 73
+		elif (self.state is 24) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(7) # q25
 				return True
 			else:
 				self.tokenLexic.append("ERROR")
-		elif (self.state is 73) :
-			if (self.cc is "n"):
-				self.state = 74
-				return True
-			else:
-				self.tokenLexic.append("ERROR")
-		elif (self.state is 74) :
+		elif (self.state is 26) :
 			if (self.cc is " "):
 				self.state = 0
-				self.tokenLexic.append(7)
+				self.tokenLexic.append(8) #q27
 				return True
-			else:
+			else :
 				self.tokenLexic.append("ERROR")
-		elif (self.state is 81) :
+				return False
+		elif (self.state is 28) :
 			if (self.cc is " "):
 				self.state = 0
-				self.tokenLexic.append(8)
+				self.tokenLexic.append(9) #29
 				return True
 			else :
 				self.tokenLexic.append("ERROR")
 				return False
-		elif (self.state is 71) :
-			if (self.cc is "h"):
-				self.state = 72
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 73) :
-			if (self.cc is "e"):
-				self.state = 74
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 74) :
-			if (self.cc is "n"):
-				self.state = 75
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 75) :
+		elif (self.state is 30) :
 			if (self.cc is " "):
 				self.state = 0
-				self.tokenLexic.append(7)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 91) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(9)
-				return True
-			else :
-				self.tokenLexic.append("ERROR")
-				return False
-		elif (self.state is 101) :
-			if (self.cc is " "):
-				self.state = 0
-				self.tokenLexic.append(10)
+				self.tokenLexic.append(10) #q31
 				return True
 			else :
 				self.tokenLexic.append("ERROR")
