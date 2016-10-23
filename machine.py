@@ -123,7 +123,7 @@ class LexicalAnalyzer:
 			else :
 				self.tokenLexic.append("ERROR")
 				return False
-		elif (self.state is 61) :
+		elif (self.state is 69) :
 			if (self.cc is " "):
 				self.state = 0
 				self.tokenLexic.append(6)
@@ -131,13 +131,38 @@ class LexicalAnalyzer:
 			else :
 				self.tokenLexic.append("ERROR")
 				return False
-		elif (self.state is 61) :
+		elif (self.state is 69) :
 			if (self.cc is "f"):
 				self.state = 81
 				return True
 			else :
 				self.tokenLexic.append("ERROR")
 				return False
+		elif (self.state is 71) :
+			if (self.cc is "h"):
+				self.state = 72
+				return True
+			else:
+				self.tokenLexic.append("ERROR")
+		elif (self.state is 72) :
+			if (self.cc is "e"):
+				self.state = 73
+				return True
+			else:
+				self.tokenLexic.append("ERROR")
+		elif (self.state is 73) :
+			if (self.cc is "n"):
+				self.state = 74
+				return True
+			else:
+				self.tokenLexic.append("ERROR")
+		elif (self.state is 74) :
+			if (self.cc is " "):
+				self.state = 0
+				self.tokenLexic.append(7)
+				return True
+			else:
+				self.tokenLexic.append("ERROR")
 		elif (self.state is 81) :
 			if (self.cc is " "):
 				self.state = 0
