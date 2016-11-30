@@ -232,7 +232,6 @@ class LexicalAnalyzer:
 					self.stack.pop()
 				self.stack.push(self.cc)
 
-			print(self.stack.size())
 			i += 1
 
 		if self.stack.peek() is 10 or self.stack.peek() is 1:
