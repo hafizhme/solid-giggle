@@ -1,8 +1,11 @@
+from dataType import Stack
+
 class LexicalAnalyzer:
 	def __init__(self, string):
 		self.string = string + ' '
 		self.cc = ''
 		self.state = 0
+		self.stack = Stack()
 		self.tokenLexic = []
 
 	def __decideState(self):
@@ -200,3 +203,39 @@ class LexicalAnalyzer:
 				cont = False
 
 		return self.tokenLexic
+	
+	def parser(self):
+		n = len(self.tokenLexic)
+		i = 0
+		self.cc = self.tokenLexic[i]
+		if self.cc is 'ERROR':
+				return False
+		self.stack.push(self.cc)
+		i += 1
+
+		while i < n:
+			self.cc = self.tokenLexic[i]
+
+			if self.cc is 'ERROR':
+				return False
+			
+			if self.stack.peek() is 1:
+				if self.cc is 2 or self.cc is 3 or self.cc is 4 or self.cc is 5 or self.cc is 7 or self.cc is 8 or self.cc is 10:
+					self.stack.pop()
+				self.stack.push(self.cc)
+			elif self.stack.peek() is 2 or self.stack.peek() is 3 or self.stack.peek() is 4 or self.stack.peek() is 5 or self.stack.peek() is 6 or self.stack.peek() is 7 or self.stack.peek() is 8 or self.stack.peek() is 9:
+				if self.cc is 1 or self.cc is 9:
+					self.stack.pop()
+				self.stack.push(self.cc)
+			elif self.stack.peek() is 10:
+				if self.cc is 3 or self.cc is 4 or self.cc is 5 or self.cc is 7 or self.cc is 8 or self.cc is 10:
+					self.stack.pop()
+				self.stack.push(self.cc)
+
+			print(self.stack.size())
+			i += 1
+
+		if self.stack.peek() is 10 or self.stack.peek() is 1:
+			self.stack.pop()
+			return self.stack.isEmpty()
+		return False
