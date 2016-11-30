@@ -224,7 +224,7 @@ class LexicalAnalyzer:
 					self.stack.pop()
 				self.stack.push(self.cc)
 			elif self.stack.peek() is 2 or self.stack.peek() is 3 or self.stack.peek() is 4 or self.stack.peek() is 5 or self.stack.peek() is 6 or self.stack.peek() is 7 or self.stack.peek() is 8 or self.stack.peek() is 9:
-				if self.cc is 1 or self.cc is 9:
+				if self.cc is 1 or self.cc is 2 or self.cc is 9:
 					self.stack.pop()
 				self.stack.push(self.cc)
 			elif self.stack.peek() is 10:
