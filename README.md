@@ -13,3 +13,6 @@ To run this program simply follow these step :
 ## Lexical Analyzer | Tahap 1
 The current version of this program have some restriction :
 - Each lexic should be separated by space
+
+## Simple Parser | Tahap 2
+Done!! Checking validity by size of stack
